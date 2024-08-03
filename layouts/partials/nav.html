@@ -1,0 +1,66 @@
+<nav class="no-copy" id="navbar">
+    <div class="nav-main">
+        <div class="title nav-left">
+            <a href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Params.navbar.title }}</a>
+        </div>
+        <div class="nav-icon">
+            {{ partial "helper/icon" "right" }}
+        </div>
+        <div class="nav-center">
+            <div class="menu--commpect" id="switch">
+                <div class="menu" >
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                    {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+                    <span {{ if $active }} class='current' {{ end }}>
+                        <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                            <span>{{- .Name -}}</span>
+                        </a>
+                    </span>
+                    {{ end }}
+                </div>
+                <div class="page-name">
+                    {{- .Title -}}
+                </div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="travelling">
+                <a href="https://www.travellings.cn/go.html" target="_blank">
+                    {{ partial "helper/icon" "train" }}
+                </a>
+            </div>
+            <div class="search">
+                <a href="/search/index.html">
+                    {{ partial "helper/icon" "search" }}
+                </a>
+            </div>
+            <div class="hamburger" type="button" id="toggleButton" aria-label="{{ T `toggleMenu` }}">
+                {{ partial "helper/icon" "hamburger" }}
+            </div>
+            {{ if (default false .Site.Params.colorScheme.toggle) }}
+                <div class="dark-mode-toggle" id="dark-mode-toggle-2">
+                    {{ partial "helper/icon" "moon" }}
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</nav>
+
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('switch');
+  
+    window.addEventListener('scroll', function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+      if (scrollTop > lastScrollTop) {
+        // 向下滚动
+        navbar.classList.add('hidden');
+      } else {
+        // 向上滚动
+        navbar.classList.remove('hidden');
+      }
+      lastScrollTop = scrollTop;
+    });
+</script>

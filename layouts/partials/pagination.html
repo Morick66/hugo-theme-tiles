@@ -1,0 +1,50 @@
+{{ if gt .Paginator.TotalPages 1 }}
+    <nav class='pagination'>
+        {{ $.Scratch.Set "hasPrevDots" false }}
+        {{ $.Scratch.Set "hasNextDots" false }}
+
+        {{ range .Paginator.Pagers }}
+            {{ if eq . $.Paginator }}
+                <span class='page-link current'>
+                    {{- .PageNumber -}}
+                </span>
+                {{ else if or (or (eq . $.Paginator.First) (eq . $.Paginator.Prev)) (or  (eq . $.Paginator.Next) (eq . $.Paginator.Last )) }}
+                    <a class='page-link' href='{{ .URL }}'>
+                        {{- .PageNumber -}}
+                    </a>
+                {{ else }}
+                    {{ if and (not ($.Scratch.Get "hasPrevDots")) (lt .PageNumber $.Paginator.PageNumber)  }}
+                        {{ $.Scratch.Set "hasPrevDots" true }}
+                        <span class='page-link dots'>&hellip;</span>
+                    {{ else if and (not ($.Scratch.Get "hasNextDots")) (gt .PageNumber $.Paginator.PageNumber) }}
+                        {{ $.Scratch.Set "hasNextDots" true }}
+                        <span class='page-link dots'>&hellip;</span>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+            <form id="redirectForm">
+                <div id="errorMsg">请输入1~{{ .Paginator.TotalPages }}之间的数字</div>
+                <input type="number" id="numberInput" placeholder="页码" required>
+                <div>{{ partial "helper/icon" "right" }}</div>
+            </form>
+        
+            <script>
+                document.getElementById('redirectForm').addEventListener('submit', function(event) {
+                    event.preventDefault(); // 阻止表单默认提交行为
+                    var number = document.getElementById('numberInput').value; // 获取输入框中的数字
+                    if (number && !isNaN(number) && number >= 1 && number <= {{ .Paginator.TotalPages }}) { // 确保输入的是有效数字且在允许的范围内
+                        window.location.href = '/page/' + number + '/'; // 根据输入跳转
+                    } else {
+                        document.getElementById('errorMsg').style.display = 'block'; // 显示错误消息
+                    }
+                });
+    
+                document.getElementById('numberInput').addEventListener('input', function(event) {
+                    var input = event.target;
+                    var form = document.getElementById('redirectForm');
+                    form.checkValidity(); // 验证表单是否有效
+                    document.getElementById('errorMsg').style.display = 'none'; // 每次修改输入时隐藏错误消息
+                });
+            </script>
+    </nav>
+{{ end }}

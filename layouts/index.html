@@ -1,0 +1,45 @@
+{{ define "main" }}
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $pag := .Paginate ($filtered) }}    
+<!-- 文章列表 -->
+<div class="site-main no-copy">
+    {{ if eq .Paginator.PageNumber 1 }}
+    <!-- 分类区域 -->
+    {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
+    {{- $terms := $taxonomy.Pages -}}
+    {{ if $terms }}
+    <h2 class="section-title">{{ $taxonomy.Title }}</h2>
+    <div class="categories-labels">
+        {{ range $terms }}
+        <div class="categories-label">
+            {{ partial "article-list/label" (dict "context" . ) }}
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+    <!-- 分类区域 -->
+    <!-- 精选列表 -->
+    <h2 class="section-title">featured</h2>
+    <section class="featured">
+        {{ range where site.Pages.ByDate.Reverse "Params.featured" "=" 1 }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+        {{ range where site.Pages.ByDate.Reverse "Params.featured" "=" 2 }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+    <!-- 精选列表 -->    
+    {{ end }}
+    <!-- 文章列表 -->
+    <h2 class="section-title">POST-LIST</h2>
+    <section class="article-list">
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+    <!-- 文章列表 -->
+    {{- partial "pagination.html" . -}}
+</div>
+{{ end }}

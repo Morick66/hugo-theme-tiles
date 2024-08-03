@@ -1,0 +1,115 @@
+.comment {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--card-background);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--shadow-l1);
+  padding: var(--card-padding);
+  color: var(--body-text-color);
+}
+.title--comment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.title--comment h2 {
+  margin: 0;
+  color: var(--main-color);
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.icon,
+.name {
+  line-height: 1;
+}
+.name {
+  margin-left: 5px;
+}
+.icon svg {
+  vertical-align: middle;
+  height: 1em;
+}
+:root {
+  --twikoo-body-text-color-main: rgba(0, 0, 0, 0.9);
+  --twikoo-body-text-color: rgba(0, 0, 0, 0.7);
+}
+:root[data-scheme="dark"] {
+  --twikoo-body-text-color-main: rgba(255, 255, 255, 0.9);
+  --twikoo-body-text-color: rgba(255, 255, 255, 0.7);
+}
+a.tk-submit-action-icon {
+  display: none;
+}
+.tk-submit-action-icon {
+  color: var(--body-text-color);
+}
+.tk-avatar {
+  width: 30px !important;
+  height: 30px !important;
+}
+.tk-avatar img {
+  width: 30px !important;
+  height: 30px !important;
+}
+.tk-replies .tk-clickable {
+  width: 25px !important;
+  height: 25px !important;
+}
+.tk-replies .tk-clickable img {
+  width: 25px !important;
+  height: 25px !important;
+}
+.twikoo .el-input-group__prepend,
+.twikoo .tk-time,
+.twikoo .tk-comments-no,
+.twikoo .tk-comments-count {
+  color: var(--twikoo-body-text-color);
+}
+.twikoo .tk-nick {
+  color: var(--main-color);
+  font-size: 20px;
+}
+.twikoo .tk-action-icon {
+  color: var(--main-color);
+}
+.tk-master .tk-nick {
+  font-size: 15px;
+}
+
+.twikoo .el-input__inner,
+.twikoo .el-textarea__inner,
+.twikoo .tk-preview-container,
+.twikoo .tk-content,
+.twikoo .tk-send {
+  color: var(--twikoo-body-text-color-main);
+}
+.twikoo .tk-preview {
+  color: var(--twikoo-body-text-color-main) !important;
+}
+.twikoo .el-input__count {
+  color: var(--twikoo-body-text-color) !important;
+}
+.OwO .OwO-body {
+  background-color: var(--body-background) !important;
+  color: var(--body-text-color) !important;
+}
+.twikoo input,
+.twikoo input:focus {
+  border: 1px solid rgba(144, 147, 153, 0.31) !important;
+}
+
+textarea:focus {
+  border: 2px solid var(--main-color) !important;
+}
+
+.twikoo .tk-send {
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.tk-expand {
+  color: var(--body-text-color);
+}

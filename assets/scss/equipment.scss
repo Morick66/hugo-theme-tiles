@@ -1,0 +1,71 @@
+// equipment装备页样式
+.equipment {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: var(--section-separation); /* 中间空10px间距 */
+	@include respond(md) {
+		grid-template-columns: repeat(3, 1fr);
+	}	
+	@include respond(lg) {
+		grid-template-columns: repeat(4, 1fr);
+	}	
+}
+
+.equipment-card {
+	position: relative;
+	background: var(--card-background);
+	border-radius: var(--card-border-radius);
+	padding: var(--card-padding);
+	.equipment-img {
+		width: 100%;
+		display: inline-block;
+		margin: 0 auto;
+	
+		img{
+			display: block;
+			margin: 20px auto;
+			width: 100%;
+			@include respond(2xl) {
+				max-width: 60%;
+			}
+		}
+	}
+	
+	.equipment-text {
+		color: var(--card-text-color-main);
+		.equipment-title{
+			margin-bottom: 10px;
+			font-size: 2rem;
+			font-weight: bold;
+			
+			@include respond(2xl) {
+			  padding: 0;
+			}
+		}
+	
+		.note {
+			font-size: var(--article-font-size);
+			color: var(--card-text-color-secondary);
+		}
+	}
+
+	.link a {
+		display: none;
+		color: var(--accent-color-text);
+		font-size: 12px;
+		border-radius: 12px;
+		padding: 8px 10px;
+		background-color: var(--card-button-color);
+		width: max-content;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+}
+
+
+.equipment-card:hover {
+	.link a {
+		display: block;
+	}
+}

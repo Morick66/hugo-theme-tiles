@@ -1,0 +1,41 @@
+{{ define "body_classes" }}page-software{{ end }} 
+{{ define "main" }}
+<!-- 软件页面 -->
+<!-- {{ partial "banner" (dict "Title" .Title "Params" .Params "items" .Params.software) }} -->
+  <div class="article-list--compact software">
+    {{ range $app := .Params.software }}
+      <article>
+        <a href="{{ $app.link }}" target="_blank">
+        <!-- 图标 -->
+        <div class="app-icon">
+          <img loading="lazy" decoding="async" src="{{ $app.image }}" class="no-copy" />
+        </div>
+        <!-- 信息 -->
+        <div class="app-info">
+          <div class="app-title">{{ $app.title }}</div>
+          <div class="note">{{ $app.note }}</div>
+        </div>
+        {{ if .articlelink }}
+        <div class="article-link no-copy">
+          <a href="{{ $app.articlelink }}">
+            相关文章
+          </a>
+        </div>
+        {{ end }} 
+        <!-- 红绿灯 -->
+        {{ if eq .paid "free" }}
+        <div class="paid free"></div>
+        {{ end }} 
+        {{ if eq .paid "pay" }}
+        <div class="paid pay"></div>
+        {{ end }} 
+        {{ if eq .paid "open" }}
+        <div class="paid open"></div>
+        {{ end }}
+      </a>
+      {{ if $app.article }}
+      {{ end }}
+      </article>
+    {{ end }}
+  </div>
+{{ end }}

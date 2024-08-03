@@ -1,0 +1,20 @@
+<div class="comment">
+  <div class="title--comment no-copy">
+      <h2>
+        <span class="icon">
+          {{ partial "helper/icon" "chat" }}
+        </span>
+        <span class="name">评论</span>
+      </h2>
+  </div>
+<div id="tcomment"></div>
+</div>
+
+{{- with .Site.Params.comments.twikoo -}}
+<script>
+  twikoo.init({
+    envId: "{{- .envId -}}",
+    el: "#tcomment",
+  });
+</script>
+{{- end -}}

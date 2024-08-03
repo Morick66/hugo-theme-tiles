@@ -1,0 +1,218 @@
+.pieces-container {
+    display: flex;
+    gap: var(--section-separation);
+    width: 100%;
+}
+
+.pieces-column {
+    flex: 1;
+}
+
+.pieces-item {
+    position: relative;
+    width: 100%;
+    background-color: var(--card-background);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-l1);
+    margin-bottom: var(--section-separation);
+    overflow: hidden;
+    
+    .pieces-content {
+        color: var(--card-text-color-main);
+        line-height: 1.5;
+    }
+    .pieces-timestamp {
+        color: var(--card-text-color-main);
+        opacity: 0.6;
+        margin-top: 10px;
+    }
+    .popup-button {
+        position: absolute;
+        display: flex;
+        bottom: 10px;
+        right: 15px;
+        cursor: pointer;
+        align-items: center;
+        gap: 5px;
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--card-text-color-main);
+            opacity: 0.5;
+        }
+        .pieces-comment-count {
+            color: var(--card-text-color-main);
+            opacity: 0.5;
+        }
+    }
+    .popup-button:hover {
+        svg {
+            fill: var(--main-color);
+            opacity: 1;
+        }
+    }
+}
+
+#load-more-container {
+    width: 100%;  
+    border-radius: 10px;
+    button {
+        width: 100%;
+        text-align: center;
+        display: block;
+        border: none;
+        background-color: transparent;
+        color: var(--card-text-color-main);
+        margin: 0 auto;
+        padding: 3px 0;
+    }
+    &:hover {
+        background-color: var(--main-color);
+        opacity: 0.5;
+        color: aliceblue;
+    }
+}
+
+// 弹窗
+.popup {
+    box-sizing: border-box;
+    color: var(--card-text-color-main);
+    position: fixed;
+    // 全屏居中
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--card-background);
+    border-radius: 20px;
+    width: 95%;
+    height: 50vh;
+    overflow: auto;
+    display: none;
+    padding: 20px;
+    box-shadow: var(--shadow-l1);
+    z-index: 10;
+    @include respond(sm) {
+        width: 80%;
+    }
+
+    @include respond(md) {
+        width: 50%;
+    }
+    .close {
+        position: sticky;
+        top: 0px;
+        margin-left: auto;
+        margin-right: 0px;
+        width: max-content;
+        height: max-content;
+        z-index: 15;
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: aliceblue;
+            background-color: red;
+            border-radius: 50%;
+            padding: 3px;
+        }
+    }
+}
+#popup-text {
+    h2 {
+        margin-top: 0;
+    }
+    img {
+        width: 100%;
+        margin: 0 auto;
+    }
+    p {
+        line-height: 1.5em;
+    }
+}
+#popup-overlay {
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(71, 71, 71, 0.5); /* 半透明背景 */
+    backdrop-filter: blur(5px);
+    display: none;
+}
+
+.loading-wave {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .loading-bar {
+    width: 20px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    animation: loading-wave-animation 1s ease-in-out infinite;
+  }
+  
+  .loading-bar:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  
+  .loading-bar:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  
+  .loading-bar:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes loading-wave-animation {
+    0% {
+      height: 10px;
+    }
+  
+    50% {
+      height: 50px;
+    }
+  
+    100% {
+      height: 10px;
+    }
+  }
+  #load-error {
+    color: var(--card-text-color-main);
+  }
+
+.pieces-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px; /* 你可以根据需要调整间距 */
+    margin: 10px 0; /* 调整图片块的上下边距 */
+}
+.pieces-image-box {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* 确保盒子是正方形 */
+    overflow: hidden;
+}
+
+.pieces-images img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.source-link {
+    color: var(--main-color);
+    &:hover {
+        color: var(--main-color);
+        opacity: 0.5;
+    }
+}

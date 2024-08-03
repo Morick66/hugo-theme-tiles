@@ -1,0 +1,115 @@
+.section-card {
+    border-radius: var(--card-border-radius);
+    background-color: var(--card-background);
+    padding: var(--small-card-padding);
+    box-shadow: var(--shadow-l1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    --separation: 15px;
+    .section-term {
+        font-size: 2.2rem;
+        margin: 0;
+        color: var(--card-text-color-main);
+    }
+
+    .section-description {
+        font-weight: normal;
+        color: var(--card-text-color-secondary);
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    .section-details {
+        flex-grow: 1;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .section-image {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+.category-list {
+    position: relative;
+    button {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        border: none;
+        background: none;
+        border-radius: var(--card-border-radius);
+        stroke: #fff;
+        width: 40px;
+        height: 40px;
+        transition: border-radius .7s, background-color .2s;
+        &:hover {
+            background-color: #ffffff5d;
+            border-radius: 100%;
+        }
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+        
+        svg {
+            width: 35px;
+            height: 35px;
+        }
+    }
+    @include respond(md) {
+        &:hover{
+            button {
+                display: flex;
+            }
+        }
+    }
+    #scrollToLeft {
+        left: 5px;
+    }
+    #scrollToRight {
+        right: 5px;
+    }
+}
+
+.subsection-list {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    .article-list--tile {
+        display: flex;
+
+        article {
+            width: 250px;
+            height: 150px;
+            margin-right: 20px;
+            flex-shrink: 0;
+
+            .article-title {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+
+            .article-details {
+                padding: 20px;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------
+//友链三栏
+@media (min-width: 1024px) {
+    .article-list--compact.links {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; //三个1fr即为三栏,两个1fr则为双栏,以此类推即可.
+      background: none;
+      box-shadow: none;
+      gap: 10px;
+    }
+  }

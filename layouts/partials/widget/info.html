@@ -1,0 +1,25 @@
+<div class="info-widget no-copy widget--card">
+    <div class="info-bg">
+    </div>
+  
+    <div class="site-avatar">
+      <img src="{{ .Site.Params.info.avatar }}" alt="" />
+    </div>
+  
+    <div class="site-meta">
+      <p class="site-name">{{ .Site.Params.info.title }}</p>
+      <p class="site-description">{{ .Site.Params.info.subtitle }}</p>
+    </div>
+    <div class="social">
+      <span class="github">
+        <a href="{{ .Site.Params.info.github }}" target="_blank">
+          <div class="svg">{{ partial "helper/icon" "github" }}</div>
+        </a>
+      </span>
+      <span class="email">
+        <a href="mailto:{{ .Site.Params.info.email }}">
+          <div class="svg">{{ partial "helper/icon" "email" }}</div>
+        </a>
+      </span>
+    </div>
+  </div>

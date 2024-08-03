@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="{{ default `ltr` .Language.LanguageDirection }}">
+    <head>
+        {{- partial "head/head.html" . -}}
+        {{- block "head" . -}}{{ end }}
+        <meta name="baidu-site-verification" content="codeva-Xk4wHYYoxI" />
+        <meta name="msvalidate.01" content="348985D817128258C5763978D0B59116" />
+        <script defer src="https://umami.morick66.com/script.js" data-website-id="a58ef592-f2c6-4c4a-b9dc-bcf98a65c5b7"></script>
+        <script src="https://registry.npmmirror.com/twikoo/1.6.38/files/dist/twikoo.all.min.js" integrity="sha384-iwCuZOQXH9C9J67oqn6gT5NKj9GRVo/CY8N3mOGk1Vr4aIiAgme2gXTh7QGagg3B" crossorigin="anonymous"></script>
+        <!-- 页面主题色脚本 -->
+        <script>
+            var mainColor = '{{ .Params.color }}'; 
+            document.documentElement.style.setProperty('--main-color', mainColor);
+        </script>
+    </head>
+    <body class="{{ block `body-class` . }}{{ end }}"  id="top">
+        <div class="global-bg"></div>
+        {{- partial "loading" . -}}
+        {{- partial "head/colorScheme" . -}}
+        {{- partial "nav" . -}}
+        {{/* The container is wider when there's any activated widget */}}
+        {{- $hasWidget := false -}}
+        {{- range .Site.Params.widgets -}}
+            {{- if gt (len .) 0 -}}
+                {{- $hasWidget = true -}}
+            {{- end -}}
+        {{- end -}}
+        <div id="overlay"></div>
+        {{ partial "sidebar/left.html" . }}
+        <div class="container main-container flex">
+            <main class="main article-grid">
+                <div class="article-main">
+                    {{- block "main" . }}{{- end }}
+                    {{ partial "footer/include.html" . }}
+                </div>
+                {{ if or (eq .Type "home") (eq .Type "post") }}
+                    <div class="article-sidebar">
+                        {{ partial "sidebar/right.html" . }}
+                    </div>
+                {{ end }}
+            </main>
+        </div>
+        {{- partial "footer/footer" . -}}
+    </body>
+    <script>
+    // 获取按钮和侧边栏
+    var toggleButton = document.getElementById('toggleButton');
+    var closeButton = document.getElementById('closeButton');
+    var sidebar = document.getElementById('left-sidebar');
+    var overlay = document.querySelector('.overlay');
+
+    // 点击按钮显示侧边栏
+    toggleButton.addEventListener('click', function() {
+        sidebar.style.left = '0';
+        overlay.style.display = 'block';
+    });
+
+    // 点击关闭按钮隐藏侧边栏
+    closeButton.addEventListener('click', function() {
+        sidebar.style.left = '-500px';
+        overlay.style.display = 'none';
+    });
+    </script>
+</html>

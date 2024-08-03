@@ -1,0 +1,6 @@
+{{ if (.Scratch.Get "TOCEnabled") }}
+<div class="widget--toc no-copy">
+  <h2>📑 目录</h2>
+  {{ .TableOfContents }}
+</div>
+{{ end }}

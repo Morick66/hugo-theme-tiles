@@ -1,0 +1,40 @@
+{{ define "main" }}
+<!-- 显示加载中的状态 -->
+<div id="pieces-loading" style="display: block;">
+    <div class="loading-wave">
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+        <div class="loading-bar"></div>
+    </div>
+    <p id= "load-error" style="text-align: center;"></p>
+</div>
+<div class="pieces-container" id="pieces-container">
+</div>
+
+
+<div id="load-more-container" style="display: none;">
+    <button id="load-more">加载更多</button>
+</div>
+
+<!-- 弹窗 -->
+<div id="popup-overlay"></div>
+<div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <div id="close-popup" class="close">
+            {{ partial "helper/icon" "close" }}
+        </div>
+        <div id="popup-text"></div>
+        <div class="title--comment no-copy">
+            <h2>
+              <span class="icon">
+                {{ partial "helper/icon" "chat" }}
+              </span>
+              <span class="name">评论</span>
+            </h2>
+        </div>
+        <div id="tcomment"></div>
+    </div>
+</div>
+<script src="https://registry.npmmirror.com/twikoo/1.6.38/files/dist/twikoo.all.min.js" integrity="sha384-iwCuZOQXH9C9J67oqn6gT5NKj9GRVo/CY8N3mOGk1Vr4aIiAgme2gXTh7QGagg3B" crossorigin="anonymous"></script>
+{{ end }}

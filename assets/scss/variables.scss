@@ -1,0 +1,191 @@
+$defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
+$defaultTagColors: #fff, #fff, #fff, #fff, #fff;
+
+// 定义字体
+
+@font-face {
+    font-family: 'XLF';
+    src: url(/font/乡立方黑体.ttf) format('truetype');
+}
+
+/*
+*   全局风格
+*/
+:root {
+    --nav-font-size: 2.0rem;
+    // 导航栏行高
+    --nav-height: 60px;
+    // 主题色
+    --main-color: #aacfd0;
+    --main-top-padding: calc(var(--nav-height) + 20px);
+    // 全局宽度
+    --main-container-width: 1200px;
+
+    --body-background: #FEFEFE;
+
+    --accent-color: #000000;
+    --accent-color-darker: #000000;
+    --accent-color-text: #fff;
+    --body-text-color: #000000b4;
+
+    --tag-border-radius: 5px;
+
+    --section-separation: 20px;
+    --gird-separation: 60px;
+    --right-sidebar-separation: 20px;
+
+
+    --scrollbar-thumb: hsl(0, 0%, 85%);
+    --scrollbar-track: var(--body-background);
+
+    &[data-scheme="dark"] {
+        --body-background: #1E1E1E;
+        --main-color: #75878a;
+        --accent-color: #ecf0f1;
+        --accent-color-darker: #bdc3c7;
+        --accent-color-text: #000;
+        --body-text-color: rgba(255, 255, 255, 0.7);
+        --scrollbar-thumb: hsl(0, 0%, 40%);
+        --scrollbar-track: var(--body-background);
+    }
+}
+/**
+*   全局字体
+*/
+:root {
+    --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
+    --zh-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
+
+    --base-font-family: "Lato", var(--sys-font-family), var(--zh-font-family), sans-serif;
+    --code-font-family: Menlo, Monaco, Consolas, "Courier New", var(--zh-font-family), monospace;
+}
+
+/*
+*   卡片风格
+*/
+:root {
+    --card-background: #fff;
+    --card-background-selected: #eaeaea;
+
+    --card-text-color-main: #000;
+    --card-text-color-secondary: #828282;
+    --card-text-color-tertiary: #767676;
+    --card-separator-color: rgba(218, 218, 218, 0.5);
+    --card-button-color: rgb(116, 116, 116);
+    
+    --card-border-radius: 10px;
+
+    --card-padding: 20px;
+
+    @include respond(md) {
+        --card-padding: 25px;
+    }
+
+    @include respond(xl) {
+        --card-padding: 20px;
+    }
+
+    --small-card-padding: 25px 20px;
+
+    @include respond(md) {
+        --small-card-padding: 25px;
+    }
+
+    &[data-scheme="dark"] {
+        --card-background: #262626;
+        --card-background-selected: rgba(255, 255, 255, 0.16);
+        --card-text-color-main: rgba(255, 255, 255, 0.9);
+        --card-text-color-secondary: rgba(255, 255, 255, 0.7);
+        --card-text-color-tertiary: rgba(255, 255, 255, 0.5);
+        --card-separator-color: rgba(255, 255, 255, 0.12);
+    }
+}
+
+/**
+*  文章内容字体设置
+*/
+:root {
+    --article-font-family: var(--base-font-family);
+    --article-font-size: 1.6rem;
+
+    @include respond(md) {
+        --article-font-size: 1.8rem;
+    }
+
+    --article-line-height: 1.85;
+}
+
+/*
+*   文章内容风格
+*/
+:root {
+    --blockquote-border-size: 4px;
+    --blockquote-background-color: rgb(248 248 248);
+
+    --heading-border-size: 4px;
+
+    --link-background-color: 189, 195, 199;
+    --link-background-opacity: 0.5;
+    --link-background-opacity-hover: 0.7;
+
+    --pre-background-color: #272822;
+    --pre-text-color: #f8f8f2;
+
+    --code-background-color: rgba(0, 0, 0, 0.12);
+    --code-text-color: #808080;
+
+    --table-border-color: #dadada;
+    --tr-even-background-color: #efefee;
+
+    --kbd-border-color: #dadada;
+
+    &[data-scheme="dark"] {
+        --code-background-color: #1E1E1E;
+        --code-text-color: rgba(255, 255, 255, 0.9);
+
+        --table-border-color: #717171;
+        --tr-even-background-color: #545454;
+
+        --blockquote-background-color: rgb(75 75 75);
+
+    }
+}
+
+/*
+*   阴影风格
+*   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
+*/
+:root {
+    --shadow-l1: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l2: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+:root {
+    --shadow:  0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    --icon-color-main: #4b4b4b;
+    &[data-scheme="dark"] {
+        --icon-color-main: #ffffff;
+        --shadow: 0px 4px 8px rgba(255, 255, 255, 0.04), 0px 0px 2px rgba(255, 255, 255, 0.06), 0px 0px 1px rgba(255, 255, 255, 0.04);
+    }
+}
+
+[data-scheme="light"] {
+    --pre-text-color: #272822;
+    --pre-background-color: #fafafa;
+    @import "partials/highlight/light.scss";
+}
+
+[data-scheme="dark"] {
+    --pre-text-color: #f8f8f2;
+    --pre-background-color: #272822;
+    @import "partials/highlight/dark.scss";
+}
+
+:root {
+    --menu-icon-separation: 10px;
+    --container-padding: 15px;
+    --widget-separation: var(--right-sidebar-separation);
+}

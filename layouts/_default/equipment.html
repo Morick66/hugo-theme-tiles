@@ -1,0 +1,28 @@
+{{ define "body-classes" }}page-equipment{{ end }} 
+{{ define "main" }}
+  <!-- 装备页面 -->
+  <!-- 调用引用这个layout的页面的yaml数据 -->
+  {{ $equipments := .Params }}
+  {{ partial "banner" . }}  
+  <div class="equipment">
+    {{ range $equipments.equipment}}
+    <div class="equipment-card">
+      <div class="equipment-img">
+        <img loading="lazy" decoding="async" src="{{ .image }}" class="no-copy" />
+      </div>
+      <!--<a href="{{ .link }}" target="_blank"><div class="details">{{ .details }}</div></a>-->
+      <div class="equipment-text">
+        <div class="equipment-title">
+            {{ .title }}
+        </div>
+        <div class="note">{{ .note }}</div>
+      </div>
+      {{ if .link }}
+      <div class="link">
+        <a href="{{ .link }}" target="_blank">查看文章</a>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+{{ end }}

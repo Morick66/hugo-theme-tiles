@@ -1,0 +1,92 @@
+.pagination {
+    display: flex;
+    background-color: var(--card-background);
+    box-shadow: var(--shadow-l1);
+    border-radius: var(--card-border-radius);
+    flex-wrap: wrap;
+
+    .page-link {
+        padding: 16px 32px;
+        display: inline-flex;
+
+        &.current {
+            font-weight: bold;
+            background-color: var(--card-background-selected);
+            color: var(--card-text-color-main);
+            border-radius: var(--card-border-radius);
+        }
+
+        color: var(--card-text-color-secondary);
+    }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+    #redirectForm {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: 10px;
+        input {
+            width: 0px;
+            height: 80%;
+            border: none;
+            padding: 0;
+            margin: 5px 0;
+            transition: width 0.2s;
+            border-radius: 10px;
+            background-color: var(--card-background-selected);
+            text-align: center;
+            color: var(--card-text-color-main);
+            font-weight: bold;
+            &:focus {
+                width: 60px;
+                outline: 0;
+            }
+        }
+        div {
+            width: auto;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                color: var(--card-text-color-main);
+                width: 25px;
+                height: 25px;
+                stroke-width: 2;
+            }
+        }
+        &:hover {
+            input {
+                width: 60px;
+            }
+        }
+        #errorMsg {
+            position: absolute;
+            bottom: 50px;
+            width: 12em;
+            height: auto;
+            display: none;
+            color: var(--card-background);
+            background-color: var(--card-text-color-main);
+            opacity: 0.5;
+            padding: 10PX;
+            border-radius: 5PX;
+            z-index: 3;
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,197 @@
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--nav-height);
+  display: flex;
+  background-color: var(--card-background);
+  box-shadow: var(--shadow-l1);
+  z-index: 50;
+  overflow: hidden;
+  // 滚动隐藏
+
+  .nav-main {
+    display: flex;
+    width: calc(var(--main-container-width) + 30px);
+    padding: 0 15px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-family: "XLF";
+      font-weight: 900;
+      font-size: 35px;
+      line-height: 35px;
+      width: max-content;
+      a {
+        &:hover {
+          color: var(--main-color);
+        }
+      }
+    }
+    .nav-icon {
+      height: var(--nav-height);
+      display: none;
+      align-items: center;
+      margin-left: 10px;
+      svg {
+        stroke-width: 2;
+        color: var(--body-text-color);
+      }
+      @include respond(md) {
+        display: flex;
+      }
+    }
+    .nav-center {
+      position: relative;
+      overflow: hidden;
+      height: var(--nav-height);
+      width: 100%;
+      .menu--commpect {
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        transition: top 0.3s;
+  
+        &.hidden {
+          top: calc(-1 * var(--nav-height));
+        }
+  
+        div.menu {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+          display: none;
+          font-size: var(--nav-font-size);
+          height: var(--nav-height);
+          font-family: "XLF";
+  
+          @include respond(md) {
+            display: block;
+            background-color: transparent;
+            box-shadow: none;
+          }
+  
+          >span {
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: var(--card-border-radius);
+            a {
+              display: inline-flex;
+              align-items: center;
+              color: var(--body-text-color);
+              height: var(--nav-height);
+              >span {
+                margin: 10px 0;
+                line-height: calc(var(--nav-height)-10px);
+                border-radius: var(--card-border-radius);
+                padding: 5px 10px;
+                &:hover {
+                  background-color: var(--main-color);
+                  color: aliceblue;
+                }
+              }
+            }
+  
+            &.current {
+              a {
+                color: var(--accent-color);
+              }
+            }
+          }
+        }
+        
+        .page-name {
+          display: none;
+          height: var(--nav-height);
+          color: var(--body-text-color);
+          font-size: var(--nav-font-size);
+          line-height: var(--nav-height);
+          font-family: "XLF";
+          padding-left: 10px;
+  
+          @include respond(md) {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .nav-right {
+      display: flex;
+      flex-direction: row;
+      vertical-align: middle;
+      align-items: center;
+      justify-content: center;
+      height: var(--nav-height);
+    }
+  }
+  .travelling,
+  .dark-mode-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: var(--card-border-radius);
+    &:hover {
+      background-color: var(--main-color);
+      svg path {
+        fill: #fff;
+      }
+    }
+    @include respond(md) {
+      display: flex;
+    }
+    a {
+      width: 20px;
+      height: 20px;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  // 手机界面元素
+
+  // 菜单按钮
+  #toggleButton {
+    z-index: 100;
+    display: block;
+    border: 0;
+    background-color: transparent;
+    align-items: center;
+    @include respond(md) {
+      display: none;
+    }
+    padding: 0;
+    margin: 0;
+    color: var(--icon-color-main);
+    width: 40px;
+    height: 40px;
+    margin-top: -5px;
+    svg {
+      stroke: currentColor;
+      stroke-width: 2.5;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+.search {
+    display: block;
+    @include respond(md) {
+      display: none;
+    }
+    svg {
+      color: var(--icon-color-main);
+      stroke-width: 2.5;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

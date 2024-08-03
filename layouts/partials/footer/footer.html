@@ -1,0 +1,62 @@
+<footer class="site-footer no-copy">
+    <div class="footer-info">
+        <div class="left-footer">
+            <section class="copyright">
+                &copy; 
+                {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
+                    {{ .Site.Params.footer.since }} - 
+                {{ end }}
+                {{ now.Format "2006" }} {{ default .Site.Title .Site.Copyright }}
+            </section>
+            <section class="static">
+                {{$scratch := newScratch}}
+                {{ range (where .Site.Pages "Kind" "page" )}}
+                    {{$scratch.Add "total" .WordCount}}
+                {{ end }}
+                共创作了{{ len (where .Site.RegularPages "Section" "post") }}篇文章，{{ div ($scratch.Get "total") 1000.0 | lang.FormatNumber 2 }}k字
+            </section>
+        </div>
+        <div class="right-footer">
+            <section class="time">
+                本站已运行<SPAN id=span_dt_dt></SPAN>
+            </section>
+            <section class="link-info">
+                <span class="RSS">
+                    <a href="https://gohugo.io/" target="_blank">Hugo</a>
+                </span>
+                <span class="theme">
+                    <a href="https://stack.jimmycai.com/" target="_blank">主题</a>
+                </span>
+                <span class="Hugo">
+                    <a href="/post/index.xml" target="_blank">订阅</a>
+                </span>
+                {{ if .Site.Params.footer.icp.enabled }}
+                <span class="ICP">
+                    <a href="{{ .Site.Params.footer.icp.icplink }}" target="_blank" target="_blank">{{ .Site.Params.footer.icp.icpnum }}</a>
+                </span>
+                {{ end }}
+            </section>
+        </div>
+    </div>
+</footer>
+
+<SCRIPT language=javascript>
+    function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("{{ .Site.Params.footer.starttime }}");//日期自己修改
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=Math.floor(e_hrsold);
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=Math.floor((e_hrsold-hrsold)*60);
+    seconds=Math.floor((e_minsold-minsold)*60);
+    span_dt_dt.innerHTML=""+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+    show_date_time();
+</SCRIPT>

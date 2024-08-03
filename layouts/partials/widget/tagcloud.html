@@ -1,0 +1,18 @@
+{{- $taxonomy := $.Site.GetPage "taxonomyTerm" "tags" -}}
+{{- $terms := $taxonomy.Pages -}}
+{{ if $terms }}
+<section class="tagcloud--widget widget--card">
+    <h2>🔖 标签</h2>
+
+    <div class="tagcloud-tags">
+        {{ if ne (len $.Site.Taxonomies.tags) 0 }}
+            {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+                {{ $tagCount := len $taxonomy.Pages }}
+                <a href="{{ .Page.RelPermalink }}" class="tagCloud-tag">
+                    #{{ $name }}<span class="tagcloud-count">{{ $tagCount }}</span>
+                </a>
+            {{ end }}
+        {{ end }}
+    </div>
+<section>
+{{ end }}

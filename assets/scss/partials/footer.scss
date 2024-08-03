@@ -1,0 +1,43 @@
+footer.site-footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    padding: 20px 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.75;
+    color: var(--accent-color);
+    background-color: var(--card-background);
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: var(--shadow-l1);
+    @include respond(md){
+        font-size: 1.6rem;
+    }
+
+    .footer-info {
+        max-width: calc(var(--main-container-width) + 20px);
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        @include respond(md) {
+            display: grid;
+            grid-template-columns: 1fr auto;
+        }
+    }
+    .right-footer {
+        text-align: left;
+        @include respond(md) {
+            text-align: right;
+        }
+        span {
+            margin: 0 2px;
+            @include respond(md) {
+                margin: 0 10px;
+            }
+            :firsest-child {
+                margin-left: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,151 @@
+{{ define "body-class" }}template-about{{ end }}
+{{ define "main" }}
+<div class="about no-copy">
+    <div class="Me">
+        <div class="aboutMe card">
+            <span class="img">
+                <img src="{{.Params.aboutMe.image}}" alt="">
+            </span>
+            <span class="introduction">
+                <h3>关于我</h3>
+                <div class="content">
+                    {{ .Content }}
+                </div>
+            </span>
+        </div>
+        <div class="personalities card">
+            <p>
+                <div class="title">
+                    <p>{{ .Params.MBTI.title | upper }}</p>
+                    <p>{{.Params.MBTI.chinese}}</p>
+                </div>
+                <div class="img">
+                    <img src="/images/mbti/{{ .Params.MBTI.title | lower }}.svg" alt="">
+                </div>
+            </p>
+        </div>
+    </div>
+    <div class="interest card">
+        <h3>我的兴趣</h3>
+        <div class="interest-content">
+            {{ range .Params.interest }}
+                <span>
+                    {{ .contentBefore }}
+                    <strong style="color: {{ .color }};">
+                        {{ .strong }}
+                    </strong>
+                    {{ .contentAfter }}
+                </span>
+            {{ end }}
+        </div>        
+    </div>
+    <div class="aboutSite">
+        <div class="about-site card">
+            <h3>关于本站</h3>
+            <div class="about-site-content">
+                {{ range .Params.aboutSite }}
+                    <div>
+                        <span class="emoji">{{ .icon }}</span>
+                        <span class="title">{{ .title }}：</span>
+                        <span class="content">
+                            {{ .content | markdownify | safeHTML }}
+                        </span>
+                    </div>
+                {{ end }}
+            </div>
+        </div>        
+        <div class="statistic card">
+            <h3>数据统计</h3>
+            <div class="content">
+                <div>
+                    <div class="name">今日人数</div>
+                    <div class="num" id="todayUv">Loading...</div>
+                </div>
+                <div>
+                    <div class="name">今日访问</div>
+                    <div class="num" id="todayPv">Loading...</div>
+                </div>
+                <div>
+                    <div class="name">昨日人数</div>
+                    <div class="num" id="yesterdayUv">Loading...</div>
+                </div>
+                <div>
+                    <div class="name">昨日访问</div>
+                    <div class="num" id="yesterdayPv">Loading...</div>
+                </div>
+                <div>
+                    <div class="name">本月访问</div>
+                    <div class="num" id="lastMonthPv">Loading...</div>
+                </div>
+            </div>
+            <div class="bgimg">
+                <div class="statistic-bgimg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="event card no-copy">
+    <h3>博客大事记</h3>
+    <section class="timeline">
+        <ol>
+            {{ range $event := .Params.event }}
+            <li>
+                <div>
+                <time>{{ $event.date }}</time>{{ $event.content }}
+                </div>
+            </li>
+            {{ end }}
+        </ol>
+    </section>
+</div>
+{{ if not (eq .Params.comments false) }}
+{{ partial "comments/twikoo" . }}
+{{ end }}
+
+{{- with .Site.Params.umami -}}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        umiTongji();
+    });
+    
+    function umiTongji() {
+        var umiToken = "{{- .token -}}";
+        var umiId = "{{- .websiteId -}}"; // 获取到的 websiteId
+        var umiTime = Date.now();
+        var apiUrl = "{{- .url -}}" + "/api/websites/" + umiId + "/stats";
+    
+        var timeRanges = {
+            today: { start: new Date().setHours(0, 0, 0, 0), end: umiTime },
+            yesterday: { start: new Date().setDate(new Date().getDate() - 1), end: new Date().setHours(0, 0, 0, 0) },
+            lastMonth: { start: new Date().setMonth(new Date().getMonth() - 1), end: umiTime }
+        };
+    
+        function fetchData(timeRange) {
+            var url = apiUrl + "?startAt=" + timeRange.start + "&endAt=" + timeRange.end;
+            return fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + umiToken,
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json());
+        }
+    
+        Promise.all([
+            fetchData(timeRanges.today),
+            fetchData(timeRanges.yesterday),
+            fetchData(timeRanges.lastMonth)
+        ]).then(([todayData, yesterdayData, lastMonthData]) => {
+            document.querySelector('#todayUv').innerHTML = todayData.visitors.value ?? 'N/A';
+            document.querySelector('#todayPv').innerHTML = todayData.pageviews.value ?? 'N/A';
+            document.querySelector('#yesterdayUv').innerHTML = yesterdayData.visitors.value ?? 'N/A';
+            document.querySelector('#yesterdayPv').innerHTML = yesterdayData.pageviews.value ?? 'N/A';
+            document.querySelector('#lastMonthPv').innerHTML = lastMonthData.pageviews.value ?? 'N/A';
+        }).catch(error => {
+            console.error('获取数据出错', error);
+            document.querySelectorAll('span').forEach(span => span.innerHTML = 'N/A');
+        });
+    }
+</script>
+{{- end -}}
+{{ end }}

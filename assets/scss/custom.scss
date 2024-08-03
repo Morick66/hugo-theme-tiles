@@ -1,0 +1,153 @@
+//归档页面双栏
+/* 归档页面两栏 */
+@include respond(md) {
+  .article-list--compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: none;
+    box-shadow: none;
+    gap: 1rem;
+
+    article {
+      background: var(--card-background);
+      box-shadow: var(--shadow-l2);
+      margin-bottom: 8px;
+      border-radius: var(--card-border-radius);
+    }
+  }
+}
+
+//--------------------------------------------------
+//链接三栏
+@media (min-width: 1024px) {
+  .article-list--compact.software,
+  .article-list--compact.links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; //三个1fr即为三栏,两个1fr则为双栏,以此类推即可.
+    background: none;
+    box-shadow: none;
+    gap: 10px;
+  }
+}
+
+.count {
+  font-size: 15px;
+  color: var(--accent-color);
+}
+
+// 分类按钮位置
+.article-header {
+  position: relative;
+}
+
+// 代码块样式修改
+.highlight {
+  background-color: var(--pre-background-color);
+  padding: var(--card-padding);
+  position: relative;
+  border-radius: 20px;
+  box-shadow: var(--shadow-l1) !important;
+
+  &:hover {
+    .copyCodeButton {
+      opacity: 1;
+    }
+  }
+}
+
+//为代码块顶部添加macos样式
+.links-content,
+.article-content {
+  .highlight:before {
+    content: "";
+    display: block;
+    background: url(/img/code-header.svg);
+    height: 32px;
+    width: 100%;
+    background-size: 57px;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    background-position: -1px 2px;
+  }
+}
+
+// 文章内容引用块样式
+.article-content {
+  blockquote {
+    background: #3a57971f;
+  }
+}
+
+// 文章列表分列
+@include respond(md) {
+  section.article-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.featured,
+.article-list {
+  .article-image {
+    overflow: hidden;
+
+    img {
+      transition: transform 0.7s ease;
+    }
+  }
+
+  :hover {
+    img {
+      transform: scale(1.15);
+    }
+    .cover-url {
+      display: block;
+    }
+  }
+}
+
+.cover-url {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  svg {
+    width: 20px;
+    height: 20px;
+    path {
+      fill: var(--card-text-color-tertiary);
+    }
+  }
+}
+
+// 跳转
+#skip {
+  position: fixed;
+  right: 10px;
+  bottom: 50px;
+  z-index: 50;
+  transition: right 0.3s ease-in-out; /* 添加过渡效果 */
+
+  a {
+    display: block;
+    background-color: var(--card-background);
+    border-radius: var(--card-border-radius);
+    padding: 10px;
+    margin: 10px;
+    border: 0.05px solid var(--main-color);
+    transition: border-radius 0.3s ease-in-out; /* 添加过渡效果 */
+    @include respond(md) {
+      padding: 15px;
+      margin: 15px;
+    }
+    &:hover {
+      border-radius: 100%;
+    }
+  }
+  &.hidden {
+    right: -80px !important;
+  }
+  svg {
+    color: var(--main-color);
+  }
+}

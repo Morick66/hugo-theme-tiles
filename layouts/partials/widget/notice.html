@@ -1,0 +1,10 @@
+{{ if eq .Type "home" }}
+<div class="notice--widget widget--card">
+    <h2>
+        <span class="shake">📢</span>
+         公告</h2> 
+    <p>
+        {{ .Site.Params.info.notice }}
+    </p>
+</div>
+{{ end }}

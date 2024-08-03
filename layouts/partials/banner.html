@@ -1,0 +1,60 @@
+<div class="banner no-copy">
+    <div class="banner-details">
+        <h1 class="banner-term">{{ .Title }}</h1>
+        {{ with .Params.description }}
+            <div class="banner-description">{{ . }}</div>
+        {{ end }}
+        <div class="tags-group-all">
+            {{ $items := .items }}
+            {{ if $items }}
+            <div class="tags-group-wrapper">
+                {{ $length := len $items }}
+                {{ range seq 0 (div (add $length 1) 2) }}
+                <div class="tags-group-icon-pair">
+                    {{ $index1 := mul . 2 }}
+                    {{ $index2 := add $index1 1 }}
+                    {{ $first := index $items $index1 }}
+                    {{ $second := index $items $index2 }}
+                    {{ if $first }}
+                    <div class="tags-group-icon">
+                        <a href="{{ $first.link }}">
+                            <img src="{{ $first.image }}" alt="{{ $first.title }}" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                    {{ end }}
+                    {{ if $second }}
+                    <div class="tags-group-icon">
+                        <a href="{{ $second.link }}">
+                            <img src="{{ $second.image }}" alt="{{ $second.title }}" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+                {{ range seq 0 (div (add $length 1) 2) }}
+                <div class="tags-group-icon-pair">
+                    {{ $index1 := mul . 2 }}
+                    {{ $index2 := add $index1 1 }}
+                    {{ $first := index $items $index1 }}
+                    {{ $second := index $items $index2 }}
+                    {{ if $first }}
+                    <div class="tags-group-icon">
+                        <a href="{{ $first.link }}">
+                            <img src="{{ $first.image }}" alt="{{ $first.title }}" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                    {{ end }}
+                    {{ if $second }}
+                    <div class="tags-group-icon">
+                        <a href="{{ $second.link }}">
+                            <img src="{{ $second.image }}" alt="{{ $second.title }}" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>

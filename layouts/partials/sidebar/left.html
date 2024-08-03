@@ -1,0 +1,62 @@
+{{ $infoParams := .Site.Params.info }}
+<aside class="left-sidebar" id="left-sidebar">
+    {{ with $infoParams }}
+    <div class="info-widget no-copy widget--card">
+        <div class="info-bg">
+        </div>
+      
+        <div class="site-avatar">
+          <img src="{{ .avatar }}" alt="" />
+        </div>
+      
+        <div class="site-meta">
+          <p class="site-name">{{ .title }}</p>
+          <p class="site-description">{{ .subtitle }}</p>
+        </div>
+        <div class="social">
+          <span class="github">
+            <a href="{{ .github }}" target="_blank">
+              <div class="svg">{{ partial "helper/icon" "github" }}</div>
+            </a>
+          </span>
+          <span class="email">
+            <a href="mailto:{{ .email }}">
+              <div class="svg">{{ partial "helper/icon" "email" }}</div>
+            </a>
+          </span>
+        </div>
+      </div>
+      {{ end }}
+    <ol class="menu" id="main-menu">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+        {{ $active := or (eq $currentPage.Title .Name) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+        <li {{ if $active }} class='current' {{ end }}>
+            <a href='{{ .URL }}' {{ if eq .Params.newTab true }}target="_blank"{{ end }}>
+                {{ $icon := default .Pre .Params.Icon }}
+                {{ if .Pre }}
+                    {{ warnf "Menu item [%s] is using [pre] field to set icon, please use [params.icon] instead.\nMore information: https://docs.stack.jimmycai.com/configuration/custom-menu.html" .URL }}
+                {{ end }}
+                {{ with $icon }}
+                    {{ partial "helper/icon" . }}
+                {{ end }}
+                <span>{{- .Name -}}</span>
+            </a>
+        </li>
+        {{ end }}
+    </ol>
+    <div class="left-bottom">
+        {{ if (default false .Site.Params.colorScheme.toggle) }}
+            <div class="dark-mode-toggle" id="dark-mode-toggle-1">
+                {{ partial "helper/icon" "moon" }}
+            </div>
+        {{ end }}
+        <div class="travelling">
+            <a href="https://www.travellings.cn/go.html" target="_blank">
+                {{ partial "helper/icon" "train" }}
+            </a>
+        </div>
+    </div>
+</aside>
+
+<div class="overlay" id="closeButton" style=""></div>

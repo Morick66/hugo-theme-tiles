@@ -1,0 +1,45 @@
+<div class="random-posts widget--card">
+    <h2>📄 随机文章</h2>
+    <button id="random-btn" onclick="loadRandomPosts()" class="">
+        {{ partial "helper/icon" "refresh" }}
+    </button>
+    <div id="random-posts"></div>
+</div>
+
+<script>
+    function loadRandomPosts() {
+        const btn = document.getElementById('random-btn');
+        btn.classList.add('rotate');  // 添加旋转类
+        btn.addEventListener('animationend', function() {
+            btn.classList.remove('rotate');  // 动画结束后移除旋转类
+        });
+        fetch('/random.json')  // 确保使用正确的 JSON 文件路径
+            .then(response => response.json())
+            .then(data => {
+                const postsContainer = document.getElementById('random-posts');
+                postsContainer.innerHTML = ''; // 清空现有的文章列表
+                const shuffled = data.articles.sort(() => 0.5 - Math.random()); // 随机排序
+                shuffled.slice(0, 5).forEach(post => { // 选择前5篇文章
+                    const postElement = document.createElement('div');
+                    postElement.innerHTML = `
+                    <a href="${post.url}">
+                        <div class="random-post">
+                            <div class="random-post-img">
+                                <img src="${post.image}" alt="${post.title}">
+                            </div>
+                            <div class="random-post-content">
+                                <h3>${post.title}</h3>
+                                <p>${new Date(post.date).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                    </a>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
+            });
+    }
+    
+    // 初始加载
+    loadRandomPosts();
+    </script>
+    

@@ -1,0 +1,57 @@
+{{ define "body-class" }}
+    article-page
+    {{/* Always enable the right sidebar if the TOC is long enough */}}
+    {{- $hasTOC := ge (len .TableOfContents) 100 -}}
+    {{- .Scratch.Set "TOCEnabled" $hasTOC -}}
+{{ end }}
+
+{{ define "main" }}
+
+    {{ if .Params.links }}
+        {{ partial "article/components/links" . }}
+    {{ end }}
+    
+    {{ partial "article/article.html" . }}
+
+    {{ partial "article/components/related-content" . }}
+     
+    {{ if not (eq .Params.comments false) }}
+        {{ partial "comments/twikoo" . }}
+    {{ end }}
+    <div id="skip">
+        <div class="skip-top">
+          <a href="#top" class="skip-top" title="返回顶部">
+            {{ partial "helper/icon" "chevron-up" }}
+          </a>
+        </div>
+        <div class="skip-comments">
+            <a href="#twikoo" class="skip-comments" title="跳转评论">
+            {{ partial "helper/icon" "chat" }}
+            </a>
+        </div>
+    </div>
+    <script>
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        const scrollToggleBtn = document.querySelector('#skip');
+
+        const handleScrollDebounced = debounce(function() {
+            scrollToggleBtn.classList.remove('hidden');
+        }, 1000);
+
+        window.addEventListener('scroll', () => {
+            scrollToggleBtn.classList.add('hidden');
+            handleScrollDebounced();
+        });
+    </script>
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ if .Scratch.Get "hasWidget" }}{{ end}}
+{{ end }}

@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+{{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+{{ $filtered := ($pages | intersect $notHidden) }}
+{{ $pag := .Paginate ($filtered) }} 
+    <div class="banner no-copy">
+        <div class="banner-404">
+            404
+        </div>
+    </div>
+    <div class="post-list">
+        <h3 class="section-title">近期文章</h3>
+        <section class="article-list">
+            {{ range first 6 $pag.Pages }}
+                {{ partial "article-list/default" . }}
+            {{ end }}
+        </section>
+    </div>
+{{ end }}

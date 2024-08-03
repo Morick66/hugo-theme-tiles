@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {{- $articles := where .Site.RegularPages "Type" "post" -}}
+    {{- $numArticles := len $articles -}}
+    {{- $comma := "" -}}
+    {{- range $i, $article := $articles -}}
+    {{ $comma }}{
+      "title": {{ $article.Title | jsonify }},
+      "url": {{ $article.Permalink | jsonify }},
+      "image": {{ (printf "%s%s" $article.Permalink $article.Params.image) | jsonify }},
+      "date": {{ $article.Date | jsonify }}
+    }
+    {{- $comma = "," -}}
+    {{- end -}}
+  ]
+}

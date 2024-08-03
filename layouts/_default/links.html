@@ -1,0 +1,17 @@
+{{ define "main" }}
+<!-- {{ partial "banner" (dict "Title" .Title "Params" .Params "items" .Params.links) }} -->
+    {{ if .Params.aggregations }}
+        <h2 class="section-title" style="margin: 0;" class="no-copy">aggregation</h2>
+        {{ partial "article/components/aggregations" . }}
+    {{ end }}
+    {{ if .Params.links }}
+        <h2 class="section-title" style="margin: 0;" class="no-copy">links</h2>
+        {{ partial "article/components/links" . }}
+    {{ end }}
+    <section class="links-content">
+        {{ .Content }}
+    </section>
+    {{ if not (eq .Params.comments false) }}
+        {{ partial "comments/twikoo" . }}
+    {{ end }}
+{{ end }}
