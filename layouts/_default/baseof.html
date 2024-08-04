@@ -5,7 +5,9 @@
         {{- block "head" . -}}{{ end }}
         <meta name="baidu-site-verification" content="codeva-Xk4wHYYoxI" />
         <meta name="msvalidate.01" content="348985D817128258C5763978D0B59116" />
-        <script defer src="https://umami.morick66.com/script.js" data-website-id="a58ef592-f2c6-4c4a-b9dc-bcf98a65c5b7"></script>
+        {{- with .Site.Params.umami -}}
+        <script defer src="{{ .url }}/script.js" data-website-id="{{ .websiteId }}"></script>
+        {{- end -}}
         <script src="https://registry.npmmirror.com/twikoo/1.6.38/files/dist/twikoo.all.min.js" integrity="sha384-iwCuZOQXH9C9J67oqn6gT5NKj9GRVo/CY8N3mOGk1Vr4aIiAgme2gXTh7QGagg3B" crossorigin="anonymous"></script>
         <!-- 页面主题色脚本 -->
         <script>
