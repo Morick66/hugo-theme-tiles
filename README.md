@@ -1,5 +1,5 @@
 <p align="left">
-<img align="left" src="static/images/avatar.png">
+<img align="left" style="margin: 0 10px 0 0; width: 50px; border-radius:5px;box-sizing: border-box; padding: 0;" src="static/images/avatar.png">
 <span style="font-size: 30px; font-weight: bold; line-height: 50px;">Hugo-theme-tiles</span>
 </p>
 <br/>
