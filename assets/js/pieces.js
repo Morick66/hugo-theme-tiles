@@ -193,9 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const commentDiv = document.createElement('div');
         commentDiv.id = commentDivId;
         twikooDiv.appendChild(commentDiv);
-        // 获取 id 为 'twikooEnvid' 的元素
         var element = document.getElementById('twikooEnvid');
-        // 获取 data-evid 属性的值
         var envid = element.getAttribute('data-envid');
         twikoo.init({
             el: `#${commentDivId}`,
