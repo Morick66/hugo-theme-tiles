@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const popupText = document.getElementById('popup-text');
     const twikooDiv = document.getElementById('tcomment');
     const popupOverlay = document.getElementById('popup-overlay');
-
+    const baseURL = '/data';
     let allItems = []; // 保存所有数据
     let itemsLoaded = 0;
     let itemsPerPage = 8;
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const imgBox = document.createElement('div');
                 imgBox.className = 'pieces-image-box';
                 const img = document.createElement('img');
-                img.dataset.src = `https://pieces.morick66.com/uploads/${image}`;
+                img.dataset.src = `${baseURL}/uploads/${image}`;
                 img.src = '/images/img-bgc.svg'; // 占位图片的 URL
                 img.alt = item.idea;
                 img.loading = 'lazy';
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     this.src = this.dataset.src;
                 };
                 const imgLightbox = document.createElement('a');
-                imgLightbox.href = `https://pieces.morick66.com/uploads/${image}`;
+                imgLightbox.href = `${baseURL}/uploads/${image}`;
                 imgLightbox.dataset.lightbox = `item-${item.id}`
                 imgContainer.appendChild(imgBox);
                 imgBox.appendChild(imgLightbox);
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
         loading.style.display = 'block';
         loadMoreButton.disabled = true;
 
-        fetch(`https://pieces.morick66.com/data.json`)
+        fetch(`${baseURL}/data.json`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const imagesHTML = item.images && item.images.length > 0 
         ? item.images.map(image => `
             <div class="pieces-image-box">
-                <img src="https://pieces.morick66.com/uploads/${image}" alt="${item.idea}" loading="lazy">
+                <img src="${baseURL}/uploads/${image}" alt="${item.idea}" loading="lazy">
             </div>`).join('')
         : '';
         popupText.innerHTML = `

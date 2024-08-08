@@ -1,0 +1,121 @@
+baseurl: https://tiles.morick66.com/
+languageCode: zh-cn
+theme: hugo-theme-tiles
+paginate: 10
+title: Tiles-Demo
+copyright: Morick莫里克
+
+hasCJKLanguage: true
+
+permalinks:
+  post: /p/:slug/
+  page: /:slug/
+
+params:
+  mainSections:
+    - post
+  featuredImageField: image
+  rssFullContent: true
+  favicon: /favicon.ico
+  info:
+    avatar: /images/avatar.png
+    title: Tiles-Demo
+    subtitle: Hugo主题Tiles示例网站
+    github: https://github.com/Morick66/hugo-theme-tiles
+    email: morick655@163.com
+    notice: Hello！我叫Morick莫里克，欢迎光顾我的博客🎉
+  navbar:
+    title: Tiles
+
+  footer:
+    since: 2024
+    customText:
+    startTime: 08/04/2024 00:00:00   # 网站创建时间
+    icp:
+      enabled: true
+      icpnum: 你的ICP备案号
+      icplink: http://beian.miit.gov.cn/ # ICP链接
+
+  dateFormat:
+    published: Jan 02, 2006
+    lastUpdated: Jan 02, 2006 15:04 MST
+
+  article:
+    math: false
+    toc: true
+    license:
+      enabled: true
+      default: Licensed under CC BY-NC-SA 4.0
+
+  comments:
+    enabled: true
+
+    twikoo:
+        envId: 'https://twikoo-seven-omega.vercel.app/'
+        region: ap-beijing
+        path: 
+        lang: zh-cn
+
+  colorScheme:
+    # Display toggle
+    toggle: true
+
+    # Available values: auto, light, dark
+    default: light
+
+  imageProcessing:
+    cover:
+      enabled: true
+    content:
+      enabled: true
+
+  ### umami统计
+  umami:
+    url: 'https://umami.morick66.com'
+    websiteId: "4350fd2d-b94c-42e2-b101-e9e23d994e44"
+    token: "suChePiQpUuzyc63FiXFa7wFWMu4ofHdihqfiEp3y8Xw/JsZj0nzUH6wEvHvfq34zD6ubzEN2/DqOHT9DPOFgjrHKAlk0VSRrjs3JkmNGRYLYCkY17PM8+K65iJKcPkY/T7H3U7eWh3EVmglooAHIg0YnZ6oLQ2BqVC31RDryiIn4KyO7S+qhAlFmr41BwnI40tiP4LIwd2OB6AVgsoYYreXkOkolsEAbXaG5oWJeJlVJGfTWYpS2rA0I3FzHE1c/ir8TLkaj6JADtNWfSi+Rnv5csBTWNzwrfUSKSOu/SXAAey7upQg4ZVkgioIDheF4ySzzza1q1rOhBFWW8UMFYbUdJAUPOQzhA=="
+
+menu:
+  main: []
+
+related:
+  includeNewer: true
+  threshold: 60
+  toLower: false
+  indices:
+    - name: tags
+      weight: 100
+    - name: categories
+      weight: 200
+
+markup:
+  goldmark:
+    renderer:
+      ## Set to true if you have HTML content inside Markdown
+      unsafe: true
+  tableOfContents:
+    endLevel: 4
+    ordered: true
+    startLevel: 2
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    tabWidth: 4
+
+outputs:
+  home:
+    - HTML
+    - randomJSON  # 使用自定义的 JSON 输出
+
+outputFormats:
+  randomJSON:
+    mediaType: "application/json"
+    baseName: "random"
+    isPlainText: true
+    notAlternative: true
+    noUgly: true
+    path: "/"

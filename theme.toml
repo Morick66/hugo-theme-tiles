@@ -12,8 +12,6 @@ tags = ["blog", "responsive", "clean", "light", "dark", "personal"]
 
 features = [
     "disqus",
-    "photoswipe",
-    "opengraph",
     "widgets",
     "darkmode",
     "table of contents",
