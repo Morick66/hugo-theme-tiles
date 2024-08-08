@@ -7,13 +7,6 @@
         "timestamp": "2024-07-28 17:15"
     },
     {
-        "id": "7fbf4eb1-1b18-464f-a3c6-8454efeb8e93",
-        "idea": "即刻页面的Twikoo评论并不获取配置文件中的配置，需要在`assets/js/pieces.js`中设置twikoo.init()`",
-        "images": [],
-        "link": "",
-        "timestamp": "2024-07-27 22:52"
-    },
-    {
         "id": "38c5d7be-0954-4894-90f0-0c0cac66ada8",
         "idea": "点击图片可以放大查看",
         "images": [
