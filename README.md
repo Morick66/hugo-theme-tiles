@@ -16,7 +16,7 @@
 
 * 1. [目录](#)
 * 2. [演示](#-1)
-	* 2.1. [示例网站——[Tiles demo](https://tiles.morick66.com/)](#Tilesdemohttps:tiles.morick66.com)
+	* 2.1. [示例网站——Tiles demo](#Tilesdemohttps:tiles.morick66.com)
 * 3. [特性](#-1)
 * 4. [安装&使用](#-1)
 	* 4.1. [前提条件](#-1)
@@ -30,7 +30,7 @@
 * 6. [短代码](#-1)
 * 7. [支持的服务](#-1)
 	* 7.1. [基本服务](#-1)
-	* 7.2. [[Pieces](https://github.com/Morick66/Pieces)](#Pieceshttps:github.comMorick66Pieces)
+	* 7.2. [Pieces](#Pieceshttps:github.comMorick66Pieces)
 * 8. [致谢](#-1)
 	* 8.1. [使用的项目](#-1)
 	* 8.2. [参考的博客网站](#-1)
