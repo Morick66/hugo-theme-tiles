@@ -3,15 +3,15 @@
 
 name = "Tiles"
 license = "GPL-3.0-only"
-licenselink = "https://github.com/CaiJimmy/hugo-theme-stack/blob/master/LICENSE"
-description = "Card-style Hugo theme designed for bloggers"
-homepage = "https://github.com/CaiJimmy/hugo-theme-stack"
-demosite = "https://demo.stack.jimmycai.com"
+licenselink = "https://github.com/Morick66/hugo-theme-tiles/blob/main/LICENSE"
+description = "A simple hugo theme"
+homepage = "https://github.com/Morick66/hugo-theme-tiles"
+demosite = "https://tiles.morick66.com"
 
 tags = ["blog", "responsive", "clean", "light", "dark", "personal"]
 
 features = [
-    "disqus",
+    "twikoo",
     "widgets",
     "darkmode",
     "table of contents",
@@ -21,5 +21,5 @@ features = [
 min_version = "0.123.0"
 
 [author]
-name = "Jimmy Cai"
-homepage = "https://jimmycai.com"
+name = "Morick"
+homepage = "https://www.morick66.com/"
