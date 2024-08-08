@@ -1,7 +1,7 @@
 baseurl: https://tiles.morick66.com/
 languageCode: zh-cn
 theme: hugo-theme-tiles
-paginate: 10
+paginate: 8
 title: Tiles-Demo
 copyright: Morick莫里克
 
@@ -23,7 +23,7 @@ params:
     subtitle: Hugo主题Tiles示例网站
     github: https://github.com/Morick66/hugo-theme-tiles
     email: morick655@163.com
-    notice: Hello！我叫Morick莫里克，欢迎光顾我的博客🎉
+    notice: Hello！欢迎光顾Tiles主题Demo网站🎉
   navbar:
     title: Tiles
 
@@ -51,7 +51,7 @@ params:
     enabled: true
 
     twikoo:
-        envId: 'https://twikoo-seven-omega.vercel.app/'
+        envId: '' # twikoo的envid
         region: ap-beijing
         path: 
         lang: zh-cn
@@ -71,10 +71,9 @@ params:
 
   ### umami统计
   umami:
-    url: 'https://umami.morick66.com'
-    websiteId: "4350fd2d-b94c-42e2-b101-e9e23d994e44"
-    token: "suChePiQpUuzyc63FiXFa7wFWMu4ofHdihqfiEp3y8Xw/JsZj0nzUH6wEvHvfq34zD6ubzEN2/DqOHT9DPOFgjrHKAlk0VSRrjs3JkmNGRYLYCkY17PM8+K65iJKcPkY/T7H3U7eWh3EVmglooAHIg0YnZ6oLQ2BqVC31RDryiIn4KyO7S+qhAlFmr41BwnI40tiP4LIwd2OB6AVgsoYYreXkOkolsEAbXaG5oWJeJlVJGfTWYpS2rA0I3FzHE1c/ir8TLkaj6JADtNWfSi+Rnv5csBTWNzwrfUSKSOu/SXAAey7upQg4ZVkgioIDheF4ySzzza1q1rOhBFWW8UMFYbUdJAUPOQzhA=="
-
+    url: '' # umami链接
+    websiteId: "" # umami网站ID
+    token: ""  # umami token
 menu:
   main: []
 
@@ -91,7 +90,6 @@ related:
 markup:
   goldmark:
     renderer:
-      ## Set to true if you have HTML content inside Markdown
       unsafe: true
   tableOfContents:
     endLevel: 4
@@ -109,7 +107,7 @@ markup:
 outputs:
   home:
     - HTML
-    - randomJSON  # 使用自定义的 JSON 输出
+    - randomJSON
 
 outputFormats:
   randomJSON:

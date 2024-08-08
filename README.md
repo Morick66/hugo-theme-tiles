@@ -29,6 +29,7 @@
 - 搜索
 - 目录
 - 基于[Lightbox2](https://github.com/lokesh/lightbox2)的响应式图片查看
+- 展示随机文章的小部件
 
 ## 安装&使用
 
