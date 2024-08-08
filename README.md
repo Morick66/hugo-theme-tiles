@@ -16,7 +16,6 @@
 
 * 1. [目录](#)
 * 2. [演示](#-1)
-	* 2.1. [示例网站——Tiles demo](#Tilesdemohttps:tiles.morick66.com)
 * 3. [特性](#-1)
 * 4. [安装&使用](#-1)
 	* 4.1. [前提条件](#-1)
@@ -38,7 +37,7 @@
 
 ##  2. <a name='-1'></a>演示
 
-###  2.1. <a name='Tilesdemohttps:tiles.morick66.com'></a>示例网站——[Tiles demo](https://tiles.morick66.com/)
+示例网站——[Tiles demo](https://tiles.morick66.com/)
 
 ##  3. <a name='-1'></a>特性
 
