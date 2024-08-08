@@ -28,10 +28,12 @@
                     <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
                 {{ end }}
             </a>
+            {{ if .Params.coverURL }}
             {{ with .Params.coverURL }}
                 <a href="{{ . }}" title="封面来源" class="cover-url">
                     {{ partial "helper/icon" "link2" }}
                 </a>
+            {{ end }}
             {{ end }}
         </div>
     {{ end }}
