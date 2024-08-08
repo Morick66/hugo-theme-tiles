@@ -182,7 +182,7 @@ keywords:
 
 Refer to specific styles on the [Demo website](https://tiles.morick66.com/p/20240321055915/).
 
-![alt text](https://github.com/Morick66/hugo-theme-tiles/images/screenshot.png)
+![alt text](https://github.com/Morick66/hugo-theme-tiles/blob/main/images/screenshot.png?raw=true)
 
 **NetEase Music**
 

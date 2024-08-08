@@ -41,7 +41,7 @@
 
 ### 示例网站——[Tiles demo](https://tiles.morick66.com/)
 
-![alt text](https://github.com/Morick66/hugo-theme-tiles/images/screenshot.png)
+![alt text](https://github.com/Morick66/hugo-theme-tiles/blob/main/images/screenshot.png?raw=true)
 
 ## 特性
 
