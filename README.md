@@ -1,7 +1,8 @@
 <p align="left">
-<img align="left" style="margin: 0 10px 0 0; width: 50px; border-radius:5px;box-sizing: border-box; padding: 0;" src="static/images/avatar.png">
+<img align="left" src="static/images/avatar.png">
 <span style="font-size: 30px; font-weight: bold; line-height: 50px;">Hugo-theme-tiles</span>
 </p>
+<br/>
 <p align="left">
 <a href="https://www.morick66.com/"><img src="https://img.shields.io/badge/Framework-Hugo-E4AE3A?logo=hugo&logoColor=white" /></a>
 <a href="https://github.com/CaiJimmy/hugo-theme-stack"><img src="https://img.shields.io/badge/Derived-Stack-blue?logo=github&logoColor=white" /></a>
