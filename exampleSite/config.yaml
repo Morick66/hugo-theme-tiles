@@ -1,4 +1,4 @@
-baseurl: https://tiles.morick66.com/
+baseurl: https://example.com
 languageCode: zh-cn
 theme: hugo-theme-tiles
 paginate: 8

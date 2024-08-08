@@ -41,6 +41,8 @@
 
 ### 示例网站——[Tiles demo](https://tiles.morick66.com/)
 
+![alt text](https://github.com/Morick66/hugo-theme-tiles/images/screenshot.png)
+
 ## 特性
 
 - 明暗主题
