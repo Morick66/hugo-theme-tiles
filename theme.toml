@@ -15,7 +15,7 @@ features = [
     "widgets",
     "darkmode",
     "table of contents",
-    "search",
+    "search"
 ]
 
 min_version = "0.123.0"
