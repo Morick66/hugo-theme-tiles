@@ -115,9 +115,18 @@
         var apiUrl = "{{- .url -}}" + "/api/websites/" + umiId + "/stats";
     
         var timeRanges = {
-            today: { start: new Date().setHours(0, 0, 0, 0), end: umiTime },
-            yesterday: { start: new Date().setDate(new Date().getDate() - 1), end: new Date().setHours(0, 0, 0, 0) },
-            lastMonth: { start: new Date().setMonth(new Date().getMonth() - 1), end: umiTime }
+            yesterday: { 
+                start: new Date(new Date().setDate(new Date().getDate() - 1)).setHours(0, 0, 0, 0), 
+                end: new Date().setHours(0, 0, 0, 0) 
+            },
+            today: { 
+                start: new Date().setHours(0, 0, 0, 0), 
+                end: umiTime 
+            },
+            lastMonth: { 
+                start: new Date(new Date().setMonth(new Date().getMonth() - 1)).setHours(0, 0, 0, 0), 
+                end: umiTime 
+            }
         };
     
         function fetchData(timeRange) {
@@ -143,7 +152,7 @@
             document.querySelector('#lastMonthPv').innerHTML = lastMonthData.pageviews.value ?? 'N/A';
         }).catch(error => {
             console.error('获取数据出错', error);
-            document.querySelectorAll('span').forEach(span => span.innerHTML = 'N/A');
+            document.querySelectorAll('.num').forEach(span => span.innerHTML = 'N/A');
         });
     }
 </script>

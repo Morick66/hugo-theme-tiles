@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const popupText = document.getElementById('popup-text');
     const twikooDiv = document.getElementById('tcomment');
     const popupOverlay = document.getElementById('popup-overlay');
-    const baseURL = '/data';
     let allItems = []; // 保存所有数据
     let itemsLoaded = 0;
     let itemsPerPage = 8;
     let hasMoreItems = true;
     let resizeTimeout;
-
+    var element = document.getElementById('piecesBaseurl');
+    var baseURL = element.getAttribute('data-baseurl');
     function getColumnCount() {
         const width = window.innerWidth;
         if (width < 600) {
